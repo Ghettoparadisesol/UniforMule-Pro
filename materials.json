@@ -1,0 +1,24 @@
+{
+  "materials": [
+    {"key": "acqua", "density": 1.0, "it": "Acqua", "en": "Water"},
+    {"key": "ferro", "density": 7.87, "it": "Ferro", "en": "Iron"},
+    {"key": "alluminio", "density": 2.7, "it": "Alluminio", "en": "Aluminum"},
+    {"key": "oro", "density": 19.3, "it": "Oro", "en": "Gold"},
+    {"key": "legno_quercia", "density": 0.75, "it": "Legno quercia", "en": "Oak wood"},
+    {"key": "plastica_pvc", "density": 1.4, "it": "PVC", "en": "PVC"},
+    {"key": "cemento", "density": 2.4, "it": "Cemento", "en": "Concrete"},
+    {"key": "acciaio_inox", "density": 8.0, "it": "Acciaio inox", "en": "Stainless steel"},
+    {"key": "vetro", "density": 2.5, "it": "Vetro", "en": "Glass"},
+    {"key": "aria", "density": 0.0012, "it": "Aria", "en": "Air"},
+    {"key": "rame", "density": 8.96, "it": "Rame", "en": "Copper"},
+    {"key": "piombo", "density": 11.34, "it": "Piombo", "en": "Lead"},
+    {"key": "zinco", "density": 7.14, "it": "Zinco", "en": "Zinc"},
+    {"key": "stagno", "density": 7.31, "it": "Stagno", "en": "Tin"},
+    {"key": "nichel", "density": 8.9, "it": "Nichel", "en": "Nickel"},
+    {"key": "titanio", "density": 4.52, "it": "Titanio", "en": "Titanium"},
+    {"key": "magnesio", "density": 1.74, "it": "Magnesio", "en": "Magnesium"},
+    {"key": "mercurio", "density": 13.534, "it": "Mercurio", "en": "Mercury"},
+    {"key": "ossigeno", "density": 0.00143, "it": "Ossigeno", "en": "Oxygen"},
+    {"key": "grafite", "density": 2.2, "it": "Grafite", "en": "Graphite"}
+  ]
+}

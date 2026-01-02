@@ -1,0 +1,55 @@
+{
+  "name": "🧮 UniForMule Pro",
+  "short_name": "UniForMule",
+  "description": "Convertitore Universale + Formule Scientifiche | 200+ Materiali | 118 Elementi Chimici | Multipli/Sottomultipli",
+  "lang": "it",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#6366f6",
+  "background_color": "#f8fafc",
+  "categories": ["utilities", "science", "productivity", "education"],
+  
+  "icons": [
+    {
+      "src": "uniformule-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "uniformule-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Convertitore UniForMule Pro - Mobile"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "📏 Convertitore",
+      "short_name": "Convertitore",
+      "description": "Apri convertitore unità",
+      "url": "/",
+      "icons": [{ "src": "uniformule-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "⚙️ Formule",
+      "short_name": "Formule",
+      "description": "Calcolatore formule scientifiche",
+      "url": "/",
+      "icons": [{ "src": "uniformule-icon.png", "sizes": "96x96" }]
+    }
+  ]
+}

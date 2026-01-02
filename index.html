@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧮 UniForMule Pro</title>
+  
+  <!-- ✅ PWA & FAVICONS -->
+  <link rel="icon" type="image/png" sizes="32x32" href="uniformule-icon.png">
+  <link rel="apple-touch-icon" href="uniformule-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6366f6">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh; padding: 24px;
+    }
+    .container {
+      max-width: 900px; margin: 0 auto;
+      background: #fff; border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    /* HEADER CON ICONA */
+    .header {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white; padding: 32px; text-align: center;
+    }
+    .header-logo {
+      display: flex; align-items: center; justify-content: center; gap: 16px; 
+      margin-bottom: 8px; flex-wrap: wrap;
+    }
+    .header-logo img {
+      width: 64px; height: 64px; border-radius: 16px; 
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      filter: drop-shadow(0 4px 12px rgba(99,102,241,0.4));
+      transition: transform 0.3s ease;
+    }
+    .header-logo img:hover { transform: scale(1.05); }
+    .header-logo h1 { margin: 0; font-size: 2.2em; font-weight: 700; }
+    .header-logo h2 { 
+      margin: 0; font-size: 1.1em; opacity: 0.95; 
+      font-weight: 400; max-width: 400px;
+    }
+    
+    /* SEZIONI SEQUENZIALI */
+    .section {
+      padding: 48px 36px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .section:last-of-type { border-bottom: none; }
+    
+    .section-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 32px; padding-bottom: 16px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .section-title {
+      font-size: 1.6em; font-weight: 700; color: #1e293b;
+    }
+    .section-icon {
+      font-size: 2em; background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    
+    label { 
+      display: flex; align-items: center; gap: 12px;
+      margin: 20px 0 8px; font-weight: 700; font-size: 1em; 
+      color: #1e293b; 
+    }
+    label::before {
+      font-size: 1.3em; opacity: 0.8;
+    }
+    
+    select, input { 
+      width: 100%; padding: 14px 16px; border: 2px solid #e2e8f0; 
+      border-radius: 12px; font-size: 1em; margin-bottom: 4px;
+      transition: all 0.2s; background: #fff;
+    }
+    select:focus, input:focus { 
+      outline: none; border-color: #6366f1; 
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+    
+    .btn { 
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white; border: none; padding: 16px 24px; 
+      font-size: 1.05em; font-weight: 600; border-radius: 12px;
+      cursor: pointer; width: 100%; margin: 24px 0;
+      transition: all 0.2s;
+    }
+    .btn:hover { 
+      transform: translateY(-1px); 
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    }
+    
+    .result { 
+      margin-top: 24px; padding: 24px; border-radius: 12px; 
+      font-size: 1.3em; font-weight: 700; text-align: center; 
+      min-height: 80px; border: 2px solid #e2e8f0; 
+      background: #f8fafc; display: flex; flex-direction: column; 
+      justify-content: center; gap: 4px;
+    }
+    .result.success { 
+      background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+      color: #3730a3; border-color: #6366f1;
+    }
+    .result.error { 
+      background: linear-gradient(135deg, #fef2f2, #fee2e2);
+      color: #dc2626; border-color: #fca5a5;
+    }
+    .result-value { font-size: 1.6em; margin-bottom: 2px; }
+    .result-units { font-size: 0.95em; opacity: 0.8; }
+    
+    #densitySection { 
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      padding: 20px; border-radius: 12px; 
+      border-left: 4px solid #0ea5e9; margin: 16px 0; display: none;
+    }
+    
+    .input-grid { 
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; 
+    }
+    
+    #descrizioneFormula { 
+      margin: 20px 0; padding: 20px; background: #f8fafc;
+      border-radius: 12px; border-left: 4px solid #6366f1;
+      font-size: 0.95em; line-height: 1.6;
+    }
+    
+    /* FOOTER */
+    .footer {
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      padding: 24px 36px; text-align: center;
+      border-top: 1px solid #e5e7eb;
+      color: #64748b; font-weight: 500;
+    }
+    
+    @media (max-width: 768px) { 
+      .input-grid { grid-template-columns: 1fr; }
+      body { padding: 16px; }
+      .header-logo { flex-direction: column; text-align: center; }
+      .header-logo h1 { font-size: 1.9em; }
+      .section { padding: 32px 24px; }
+      .footer { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER CON ICONA -->
+    <div class="header">
+      <div class="header-logo">
+        <img src="uniformule-icon.png" alt="🧮 UniForMule Pro" loading="lazy">
+        <div>
+          <h1>UniForMule Pro</h1>
+          <h2>Convertitore Universale + Formule Scientifiche</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONVERTITORE -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">📏</div>
+        <div class="section-title">Convertitore Unità</div>
+      </div>
+      
+      <label for="category">📊 Categoria</label>
+      <select id="category">
+        <option value="">Seleziona categoria...</option>
+      </select>
+
+      <div class="input-grid">
+        <div>
+          <label for="fromUnit">← Da</label>
+          <select id="fromUnit">
+            <option value="">Seleziona unità...</option>
+          </select>
+        </div>
+        <div>
+          <label for="toUnit">A →</label>
+          <select id="toUnit">
+            <option value="">Seleziona unità...</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="inputValue">🔢 Valore</label>
+      <input type="number" id="inputValue" step="any" placeholder="es. 100">
+
+      <div id="densitySection">
+        <label>⚗️ Densità</label>
+        <div class="input-grid">
+          <div>
+            <label>Materiale</label>
+            <select id="material"></select>
+          </div>
+          <div>
+            <label>Manuale (g/cm³)</label>
+            <input type="number" id="densityInput" step="0.0001" placeholder="es. 1.0">
+          </div>
+        </div>
+      </div>
+
+      <button id="convertBtn" class="btn">Converti</button>
+      <div id="result" class="result">
+        <div class="result-value">Seleziona categoria</div>
+        <div class="result-units">e unità per iniziare</div>
+      </div>
+    </div>
+
+    <!-- FORMULE -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">⚙️</div>
+        <div class="section-title">Calcolatore Formule</div>
+      </div>
+      
+      <div class="input-grid">
+        <div>
+          <label for="formuleCategoria">📚 Categoria</label>
+          <select id="formuleCategoria">
+            <option value="">Seleziona categoria...</option>
+          </select>
+        </div>
+        <div>
+          <label for="formulaSelect">📐 Formula</label>
+          <select id="formulaSelect">
+            <option value="">Seleziona formula...</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="descrizioneFormula"></div>
+      <div id="calculationArea"></div>
+      <div id="formulaResult" class="result">
+        <div class="result-value">Seleziona categoria</div>
+        <div class="result-units">e formula per calcolare</div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>👨‍💻 Francesco Solazzo</div>
+      <small>Full-stack Web Developer & Solution Architect | © 2025 UniForMule Pro</small>
+    </footer>
+  </div>
+
+  <!-- I TUOI FILE JS -->
+  <script src="convertitore.js"></script>
+  <script src="formule.js"></script>
+
+  <!-- INIZIALIZZAZIONE -->
+  <script>
+    window.addEventListener('load', () => {
+      // ✅ Inizializza convertitore (evita duplicati)
+      if (window.convertitore?.populateCategories && !document.getElementById('category').children.length > 1) {
+        window.convertitore.populateCategories();
+        window.convertitore.populateMaterials();
+      }
+    });
+  </script>
+</body>
+</html>

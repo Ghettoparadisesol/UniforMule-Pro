@@ -1,0 +1,84 @@
+{
+  "categories": {
+    "lunghezza": {
+      "it": "Lunghezza",
+      "en": "Length"
+    },
+    "area": {
+      "it": "Area",
+      "en": "Area"
+    },
+    "volume": {
+      "it": "Volume",
+      "en": "Volume"
+    },
+    "massa": {
+      "it": "Massa",
+      "en": "Mass"
+    },
+    "temperatura": {
+      "it": "Temperatura",
+      "en": "Temperature"
+    },
+    "velocita": {
+      "it": "Velocità",
+      "en": "Speed"
+    },
+    "energia": {
+      "it": "Energia",
+      "en": "Energy"
+    },
+    "potenza": {
+      "it": "Potenza",
+      "en": "Power"
+    },
+    "pressione": {
+      "it": "Pressione",
+      "en": "Pressure"
+    },
+    "forza": {
+      "it": "Forza",
+      "en": "Force"
+    },
+    "densita": {
+      "it": "Densità",
+      "en": "Density"
+    },
+    "tempo": {
+      "it": "Tempo",
+      "en": "Time"
+    },
+    "angoli": {
+      "it": "Angoli",
+      "en": "Angles"
+    },
+    "flusso": {
+      "it": "Flusso Elettrico",
+      "en": "Electric Current"
+    },
+    "valuta": {
+      "it": "Valuta",
+      "en": "Currency"
+    },
+    "frequenza": {
+      "it": "Frequenza",
+      "en": "Frequency"
+    },
+    "luminosita": {
+      "it": "Luminosità",
+      "en": "Luminosity"
+    },
+    "viscosita": {
+      "it": "Viscosità",
+      "en": "Viscosity"
+    },
+    "conduttivita": {
+      "it": "Conduttività",
+      "en": "Conductivity"
+    },
+    "capacita": {
+      "it": "Capacità",
+      "en": "Capacity"
+    }
+  }
+}
