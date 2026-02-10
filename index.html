@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🧮 UniForMule Pro</title>
-  
+
   <!-- ✅ PWA & FAVICONS -->
   <link rel="icon" type="image/png" sizes="32x32" href="uniformule-icon.png">
   <link rel="apple-touch-icon" href="uniformule-icon.png">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#6366f6">
-  
+
+  <!-- ✅ AdSense (sostituisci ca-pub-TEST con il tuo Publisher ID) -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-TEST"
+    crossorigin="anonymous"></script>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
@@ -23,8 +28,11 @@
       background: #fff; border-radius: 16px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.1);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
     }
-    
+
     /* HEADER CON ICONA */
     .header {
       background: linear-gradient(135deg, #6366f1, #8b5cf6);
@@ -46,10 +54,30 @@
       margin: 0; font-size: 1.1em; opacity: 0.95; 
       font-weight: 400; max-width: 400px;
     }
-    
+
+    /* SEZIONE ADSENSE PRINCIPALE (sotto header) */
+    .ad-section {
+      padding: 0 36px 8px 36px;
+    }
+    .ad-wrapper {
+      text-align: center;
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: 12px;
+      padding: 16px 8px;
+      margin-top: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .ad-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
     /* SEZIONI SEQUENZIALI */
     .section {
-      padding: 48px 36px;
+      padding: 32px 36px 48px 36px;
       border-bottom: 1px solid #e5e7eb;
     }
     .section:last-of-type { border-bottom: none; }
@@ -131,6 +159,55 @@
       border-radius: 12px; border-left: 4px solid #6366f1;
       font-size: 0.95em; line-height: 1.6;
     }
+
+    /* 🆕 OVERLAY ADS 5 SECONDI */
+    .ad-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.75);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    .ad-overlay-content {
+      background: #ffffff;
+      padding: 28px 24px;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      max-width: 340px;
+      width: 90%;
+      text-align: center;
+      animation: slideIn 0.3s ease-out;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .ad-overlay-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #111827;
+      margin-bottom: 12px;
+    }
+    .ad-overlay-timer {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ef4444;
+      margin-bottom: 16px;
+      font-variant-numeric: tabular-nums;
+    }
+    .ad-overlay-box {
+      border-radius: 12px;
+      border: 2px dashed #e5e7eb;
+      padding: 16px;
+      background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     
     /* FOOTER */
     .footer {
@@ -138,6 +215,33 @@
       padding: 24px 36px; text-align: center;
       border-top: 1px solid #e5e7eb;
       color: #64748b; font-weight: 500;
+      margin-top: auto;
+    }
+
+    /* 🆕 BANNER PICCOLO IN PIÈ DI PAGINA */
+    .bottom-ad-container {
+      position: sticky;
+      bottom: 0;
+      z-index: 900;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      background: rgba(248, 250, 252, 0.96);
+      border-top: 1px solid #e5e7eb;
+      backdrop-filter: blur(8px);
+    }
+    .bottom-ad-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+    }
+    .bottom-ad-container ins {
+      display: inline-block;
+      width: 320px;
+      height: 50px;
     }
     
     @media (max-width: 768px) { 
@@ -145,14 +249,20 @@
       body { padding: 16px; }
       .header-logo { flex-direction: column; text-align: center; }
       .header-logo h1 { font-size: 1.9em; }
-      .section { padding: 32px 24px; }
+      .section { padding: 32px 24px 40px 24px; }
+      .ad-section { padding: 0 24px 8px 24px; }
       .footer { padding: 20px 24px; }
+      .bottom-ad-container ins {
+        width: 320px !important;
+        height: 50px !important;
+      }
+      .ad-overlay-content { max-width: 300px; padding: 24px 20px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- HEADER CON ICONA -->
+    <!-- HEADER -->
     <div class="header">
       <div class="header-logo">
         <img src="uniformule-icon.png" alt="🧮 UniForMule Pro" loading="lazy">
@@ -162,6 +272,22 @@
         </div>
       </div>
     </div>
+
+    <!-- ADSENSE BANNER PRINCIPALE (sotto header) -->
+    <section class="ad-section">
+      <div class="ad-wrapper">
+        <div class="ad-label">Annuncio</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-TEST"
+             data-ad-slot="0000000000"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+    </section>
 
     <!-- CONVERTITORE -->
     <div class="section">
@@ -244,6 +370,28 @@
       </div>
     </div>
 
+    <!-- 🆕 OVERLAY ADS 5 SECONDI -->
+    <div id="adOverlay" class="ad-overlay" style="display:none;">
+      <div class="ad-overlay-content">
+        <div class="ad-overlay-title">⏱️ Annuncio</div>
+        <div class="ad-overlay-timer">5</div>
+        <div class="ad-overlay-box">
+          <span style="font-size:0.85rem;color:#6b7280;font-weight:500;">Spazio pubblicitario</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BANNER PICCOLO IN PIÈ DI PAGINA -->
+    <div class="bottom-ad-container">
+      <div class="bottom-ad-label">Annuncio</div>
+      <ins class="adsbygoogle"
+           data-ad-client="ca-pub-TEST"
+           data-ad-slot="0000000001"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
     <!-- FOOTER -->
     <footer class="footer">
       <div>👨‍💻 Francesco Solazzo</div>
@@ -255,13 +403,75 @@
   <script src="convertitore.js"></script>
   <script src="formule.js"></script>
 
-  <!-- INIZIALIZZAZIONE -->
+  <!-- 🆕 INIZIALIZZAZIONE + OVERLAY -->
   <script>
+    // Funzione overlay timer 5 secondi
+    function showAdOverlay(callback) {
+      const overlay = document.getElementById('adOverlay');
+      const timerEl = overlay.querySelector('.ad-overlay-timer');
+      let remaining = 5;
+
+      timerEl.textContent = remaining;
+      overlay.style.display = 'flex';
+
+      const interval = setInterval(() => {
+        remaining -= 1;
+        timerEl.textContent = remaining;
+        if (remaining <= 0) {
+          clearInterval(interval);
+          overlay.style.display = 'none';
+          if (typeof callback === 'function') callback();
+        }
+      }, 1000);
+    }
+
     window.addEventListener('load', () => {
-      // ✅ Inizializza convertitore (evita duplicati)
-      if (window.convertitore?.populateCategories && !document.getElementById('category').children.length > 1) {
+      // Inizializza convertitore
+      if (window.convertitore?.populateCategories && document.getElementById('category').children.length <= 1) {
         window.convertitore.populateCategories();
-        window.convertitore.populateMaterials();
+        if (window.convertitore.populateMaterials) {
+          window.convertitore.populateMaterials();
+        }
+      }
+
+      // 🔗 LEGA OVERLAY AL TASTO CONVERTI
+      const convertBtn = document.getElementById('convertBtn');
+      if (convertBtn) {
+        // Salva la funzione convert originale
+        const originalConvert = window.convert;
+        
+        // Sostituisci con wrapper che mostra overlay
+        convertBtn.removeEventListener('click', originalConvert);
+        convertBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          showAdOverlay(() => {
+            if (typeof originalConvert === 'function') originalConvert();
+          });
+        });
+      }
+
+      // 🔗 LEGA OVERLAY AI BOTTONI CALCOLA FORMULE (dinamici)
+      // Intercetta la creazione dei bottoni formule
+      const calculationArea = document.getElementById('calculationArea');
+      if (calculationArea) {
+        const observer = new MutationObserver(() => {
+          const formulaBtn = calculationArea.querySelector('button.btn');
+          if (formulaBtn && !formulaBtn.dataset.overlayAttached) {
+            formulaBtn.dataset.overlayAttached = 'true';
+            
+            const originalClickHandler = formulaBtn.onclick;
+            formulaBtn.onclick = null;
+            
+            formulaBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              showAdOverlay(() => {
+                if (originalClickHandler) originalClickHandler.call(formulaBtn);
+              });
+            });
+          }
+        });
+        
+        observer.observe(calculationArea, { childList: true, subtree: true });
       }
     });
   </script>
